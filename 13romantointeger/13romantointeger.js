@@ -1,3 +1,13 @@
+const numeralMap = {
+    M: 1000,
+    D: 500,
+    C: 100,
+    L: 50,
+    X: 10,
+    V: 5,
+    I: 1
+}
+
 /**
  * @param {string} numerals
  * @return {number}
@@ -22,9 +32,8 @@ var romanToInt = function(numerals) {
  */
 var splitRoman = function(numerals, index) {
     const current = convert(numerals[index]);
-    if(!numerals[index + 1]) return {result: current, depth: 0};
-
     const next = convert(numerals[index + 1]);
+    
     if(next > current){
         return  {result: next - current, depth: 1};
     } else {
@@ -37,20 +46,5 @@ var splitRoman = function(numerals, index) {
  * @return {number}
  */
 var convert = function (numeral) {
-    switch(numeral){
-        case 'M':
-            return 1000;
-        case 'D':
-            return 500;
-        case 'C':
-            return 100;
-        case 'L':
-            return 50;
-        case 'X':
-            return 10;
-        case 'V':
-            return 5;
-        case 'I':
-            return 1;
-    }
+    return numeralMap[numeral];
 }
